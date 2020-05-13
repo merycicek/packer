@@ -12,8 +12,25 @@
   
       "ssh_username": "centos", 
   
-      "ami_name": "packer-example {{timestamp}}" 
+      "ami_name": "centos-golden-image {{timestamp}}" 
   
-    }] 
+    }], 
+
+    "provisioners": [
+
+     { 
+
+        "type": "shell", 
+
+           "inline":[ 
+
+               "sudo yum update -y", 
+
+               "sudo yum install httpd -y" 
+
+            ] 
+
+      }
+   ] 
   
   } 
