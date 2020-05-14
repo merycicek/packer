@@ -1,35 +1,24 @@
-{ 
-
-    "builders": [{ 
-  
-      "type": "amazon-ebs", 
-  
-      "region": "us-east-1", 
-  
-      "source_ami": "ami-02eac2c0129f6376b", 
-  
-      "instance_type": "t2.micro", 
-  
-      "ssh_username": "centos", 
-  
-      "ami_name": "centos-golden-image {{timestamp}}",
-      "ssh_keypair_name": "ec2-ireland",
-      "ssh_private_key_file":"/home/ec2-user/.ssh/id_rsa"
-   }], 
+{
+   "builders": [{
+       "type": "amazon-ebs",
+       "region": "{{user `region`}}",
+       "source_ami": "ami-02eac2c0129f6376b",
+       "instance_type": "t2.micro",
+       "ssh_username": "centos",
+       "ssh_key_name”: “bastion_host”,
+       "ami_name": "packer-breakpoint {{timestamp}}"
+       }
+     ],
    "provisioners": [
-    { 
-
-        "type": "shell", 
-
-           "inline":[ 
-
-               "sudo yum update -y", 
-
-               "sudo yum install httpd -y" 
-
-            ] 
-
-      }
-   ] 
-  
-  } 
+       {
+           "type": "shell",
+              "inline":[
+                  "sudo yum install httpd -y"
+               ]
+           },
+     {
+       "type": "breakpoint",
+       "note": "Wait for you to delete"
+     }
+  ]
+}
