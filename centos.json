@@ -13,7 +13,7 @@
       "ssh_username": "centos", 
   
       "ami_name": "centos-golden-image {{timestamp}}",
-      "ssh_keypair_name": "asg-key-pair",
+      "ssh_keypair_name": "ec2-ireland",
       "ssh_private_key_file":"/home/ec2-user/.ssh/id_rsa"
    }], 
    "provisioners": [
