@@ -4,7 +4,7 @@
 
         "type": "amazon-ebs", 
 
-        "region": "{{user 'region'}}", 
+        "region": "us-east-1", 
 
         "source_ami": "ami-02eac2c0129f6376b", 
 
